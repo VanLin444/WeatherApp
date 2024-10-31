@@ -9,12 +9,17 @@ body {
     padding: 20px 40px 40px 40px;
     border-radius: 2px;
     width: 550px;
-    margin: 0 auto;
+    background-color: rgb(201, 197, 197);
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .weather-icon {
     vertical-align: middle;
     margin-right: 20px;
+    margin-top: 5px;
 }
 
 .weather-forecast {
@@ -26,9 +31,18 @@ body {
 
 span.min-temperature {
     margin-left: 15px;
-    color: #ff8800;
+    color: blue;
+}
+
+span.max-temperature {
+    margin-left: 15px;
+    color: red;
 }
 
 .time {
     line-height: 25px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 125%;
 }
