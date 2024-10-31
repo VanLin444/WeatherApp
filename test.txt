@@ -1,0 +1,8 @@
+<form id="form" action="" method="POST">
+            <select name="city">
+                <option value="524901">Москва</option>
+                <option value="551487">Казань</option>
+                <option value="4171563">Санкт Петербург</option>
+            </select>
+            <input type="submit" value = 'Прогноз'>
+        </form>
