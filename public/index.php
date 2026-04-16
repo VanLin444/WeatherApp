@@ -8,6 +8,8 @@
 </head>
 <body>
     <div class="wrapper">
+        <input type="text" class="search-city" placeholder="Введите город...">
+
         <div class="current-weather">
             <H1><span>+11°</span>Kazan</H1>
             <div class="weather-icon"><img src="" alt="icon"></div>
@@ -16,6 +18,14 @@
                 <li><span></span>730</li>
                 <li><span></span>48%</li>
             </ul>
+        </div>
+        <div class="week-weather">
+            <div class="week-day"></div>
+            <div class="week-day"></div>
+            <div class="week-day"></div>
+            <div class="week-day"></div>
+            <div class="week-day"></div>
+            <div class="week-day"></div>
         </div>
     </div>
 </body>

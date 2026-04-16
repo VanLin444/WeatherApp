@@ -8,12 +8,25 @@ body {
 }
 
 .wrapper {
-    height: 20vh;
+    min-height: 20vh;
     width: 80vh;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 32px;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-city {
+    min-height: 5vh;
+    border: 1px solid rgba(247, 248, 250, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
+    margin: 20px 20px 5px 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    outline: none;
 }
 
 .current-weather {
@@ -21,6 +34,7 @@ body {
     flex-direction: row;
     margin: 20px;
     border: 1px solid black;
+    border-radius: 16px;
     align-items: center;
 }
 
@@ -32,12 +46,33 @@ body {
 .weather-stats {
     list-style-type:  none;
     border: 1px solid green;
+    margin-right: auto;
 }
 
 .weather-stats li {
-    display: inline;
+    display: table;
 }
 
 span {
     margin: 5px;
+}
+
+.week-weather {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 20px;
+    border: 1px solid orange;
+    overflow-x: auto;
+}
+.week-day {
+    min-width: 15vh;
+    min-height: 9vh;
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 16px;
+}
+
+h1 {
+    font-size: 4rem;
 }
