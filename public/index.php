@@ -1,3 +1,8 @@
+<?php 
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+require '../src/WeatherService.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +16,7 @@
         <input type="text" class="search-city" placeholder="Введите город...">
 
         <div class="current-weather">
-            <H1><span>+11°</span>Kazan</H1>
+            <H1><span><?= round($data->main->temp); ?>°C</span><?= $data->name; ?></H1>
             <div class="weather-icon"><img src="" alt="icon"></div>
             <ul class="weather-stats">
                 <li><span></span>4,1 м/с, Ю</li>
