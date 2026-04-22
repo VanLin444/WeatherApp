@@ -13,7 +13,8 @@ require '../src/WeatherService.php';
 </head>
 <body>
     <div class="wrapper">
-        <input type="text" class="search-city" placeholder="Введите город...">
+        <input type="text" id="search" class="search-city" placeholder="Введите город...">
+        <ul class="suggestions" id="suggestions"></ul>
 
         <div class="current-weather">
             <H1><span><?= round($data->main->temp); ?>°C</span><?= $data->name; ?></H1>
@@ -33,6 +34,7 @@ require '../src/WeatherService.php';
             <div class="week-day"></div>
         </div>
     </div>
+    <script src="../src/autocomplete.js"></script>
 </body>
 
 <footer>

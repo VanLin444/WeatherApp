@@ -76,3 +76,19 @@ span {
 h1 {
     font-size: 4rem;
 }
+
+.suggestions {
+    border: 1px solid rgba(247, 248, 250, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
+    margin: 10px 20px 5px 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    outline: none;
+    padding: 10px 30px 10px 30px;
+}
+
+.suggestion li {
+    padding: 10px;
+    cursor: pointer;
+}

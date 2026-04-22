@@ -16,5 +16,4 @@ $response = curl_exec($ch);
 
 curl_close($ch);
 $data = json_decode($response);
-$currentTime = time();
 ?>
