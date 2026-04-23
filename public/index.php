@@ -13,16 +13,17 @@ require '../src/WeatherService.php';
 </head>
 <body>
     <div class="wrapper">
-        <input type="text" id="search" class="search-city" placeholder="Введите город...">
+        <input type="text" id="search" class="search-city" placeholder="Введите город..." autocomplete="off">
         <ul class="suggestions" id="suggestions"></ul>
 
         <div class="current-weather">
-            <H1><span><?= round($data->main->temp); ?>°C</span><?= $data->name; ?></H1>
+            <H1><span><?= round($data->main->temp); ?>°C </span><?= $data->name; ?></H1>
             <div class="weather-icon"><img src="" alt="icon"></div>
             <ul class="weather-stats">
-                <li><span></span>4,1 м/с, Ю</li>
-                <li><span></span>730</li>
-                <li><span></span>48%</li>
+                <li><span></span>Ветер : <?= $data->wind->speed ?> м/с</li>
+                <li><span></span>Атм. давление : <?= ($data->main->grnd_level)*0.75 ?> мм рт. ст.</li>
+                <li><span></span>Влажность : <?= $data->main->humidity ?> %</li>
+                <li><span></span>Облачность : <?= $data->clouds->all ?> %</li>
             </ul>
         </div>
         <div class="week-weather">
