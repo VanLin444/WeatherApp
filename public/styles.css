@@ -39,7 +39,7 @@ body {
 }
 
 .weather-icon{
-    margin: 10px;
+    margin: 5px;
     border: 1px solid red;
 }
 
@@ -51,6 +51,7 @@ body {
 
 .weather-stats li {
     display: table;
+    border: 1px solid purple;
 }
 
 span {
@@ -91,4 +92,13 @@ h1 {
 .suggestion li {
     padding: 10px;
     cursor: pointer;
+}
+
+img {
+    width: 50px; 
+    height: auto;
+}
+
+h1 {
+    border: 1px solid blue;
 }
