@@ -23,7 +23,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-curl_close($ch);
+unset($ch);
 
 $data = json_decode($response, true);
 

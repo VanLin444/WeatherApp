@@ -1,5 +1,3 @@
-console.log(1234);
-
 const input = document.getElementById('search');
 const list = document.getElementById('suggestions');
 
@@ -28,8 +26,8 @@ input.addEventListener('input', () => {
 
                     li.addEventListener('click', () => {
                         input.value = city.name;
-                        list.innerHTML = '';
-
+                        list.style.display = 'none';
+                        console.log(city.lat, city.lon);
                         // тут можно вызвать загрузку погоды
                         loadWeatherByCoords(city.lat, city.lon);
                     });
