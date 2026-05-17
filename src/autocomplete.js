@@ -5,14 +5,16 @@ let timeout = null;
 
 input.addEventListener('input', () => {
     const query = input.value;
-
     // debounce (чтобы не спамить API)
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
         if (query.length < 2) {
             list.innerHTML = '';
+            document.getElementById("suggestions").style.display = "none";
             return;
+        } else {
+            document.getElementById("suggestions").style.display = "block";
         }
 
         fetch(`search.php?q=${query}`)
@@ -27,8 +29,7 @@ input.addEventListener('input', () => {
                     li.addEventListener('click', () => {
                         input.value = city.name;
                         list.style.display = 'none';
-                        console.log(city.lat, city.lon);
-                        // тут можно вызвать загрузку погоды
+                        // Загрузка погоды
                         loadWeatherByCoords(city.lat, city.lon);
                     });
 

@@ -58,22 +58,6 @@ span {
     margin: 5px;
 }
 
-.week-weather {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin: 20px;
-    border: 1px solid orange;
-    overflow-x: auto;
-}
-.week-day {
-    min-width: 15vh;
-    min-height: 9vh;
-    border: 1px solid black;
-    margin: 20px;
-    border-radius: 16px;
-}
-
 h1 {
     font-size: 4rem;
 }
@@ -87,6 +71,7 @@ h1 {
     font-size: 20px;
     outline: none;
     padding: 10px 30px 10px 30px;
+    display: none;
 }
 
 .suggestion li {
