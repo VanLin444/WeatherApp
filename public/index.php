@@ -24,10 +24,10 @@
                 <img id="icon" alt="icon">
             </div>
             <ul class="weather-stats">
-                <li><span id="wind"><img src="../img/wind.png" alt="wind"></span>Ветер</li>
-                <li><span id="pressure"><img src="../img/pressure.png" alt="pressure"></span>Атм. давление</li>
-                <li><span id="humidity"><img src="../img/humidity.png" alt="humidity"></span>Влажность</li>
-                <li><span id="clouds"><img src="../img/clouds.png" alt="clouds"></span>Облачность</li>
+                <li><img src="../img/wind.png" alt="wind"><span id="wind"></span></li>
+                <li><img src="../img/pressure.png" alt="pressure"><span id="pressure"></span></li>
+                <li><img src="../img/humidity.png" alt="humidity"><span id="humidity"></span></li>
+                <li><img src="../img/clouds.png" alt="clouds"><span id="clouds"></span></li>
             </ul>
         </div>
     </div>
