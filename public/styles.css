@@ -4,12 +4,14 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: rgba(247, 248, 250, 1);
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
+    color: #1E293B;
 }
 
 .wrapper {
-    min-height: 20vh;
-    width: 80vh;
+    max-height: auto;
+    max-width: 80vh;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 32px;
@@ -30,36 +32,41 @@ body {
 }
 
 .current-weather {
-    display:flex;
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     margin: 20px;
     border: 1px solid black;
     border-radius: 16px;
     align-items: center;
+    background: linear-gradient(135deg, #eef7ff, #cfe9ff);
+    border: 1px solid #d6d6d6;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.weather-icon{
-    margin: 5px;
-    border: 1px solid red;
+.info {
+    font-size: 54px;
+    margin: 20px;
 }
 
 .weather-stats {
-    list-style-type:  none;
-    border: 1px solid green;
-    margin-right: auto;
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
 .weather-stats li {
-    display: table;
-    border: 1px solid purple;
+    display: flex;
+    align-items: center;
+    margin: 5px;
 }
 
 span {
     margin: 5px;
-}
-
-h1 {
-    font-size: 4rem;
 }
 
 .suggestions {
@@ -87,10 +94,46 @@ h1 {
 }
 
 .weather-stats img {
-    width: 50px; 
+    width: 50px;
     height: auto;
 }
 
-h1 {
-    border: 1px solid blue;
+.weather-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+input:focus {
+    outline: none;
+    border-color: #9CA3AF;
+    box-shadow:
+        0 0 0 4px rgba(156, 163, 175, 0.25),
+        0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width:750px) {
+    .wrapper {
+        min-height: 650px;
+        min-width: 450px;
+    }
+    .current-weather {
+        flex-direction: column;
+    }
+
+    .weather-header {
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .weather-stats {
+        flex-wrap: wrap;
+    }
+
+    .info {
+        text-align: center;
+        overflow-wrap: break-word;
+    }
 }

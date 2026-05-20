@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherApp</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body onload="loadWeatherByCoords()">
@@ -16,12 +16,14 @@
         <ul class="suggestions" id="suggestions"></ul>
 
         <div class="current-weather">
-            <h1>
-                <span id="temp"></span>
-                <span id="city"></span>
-            </h1>
-            <div class="weather-icon">
-                <img id="icon" alt="icon">
+            <div class="weather-header">
+                <div class="info">
+                    <span id="city"></span>
+                    <span id="temp"></span>
+                </div>
+                <div class="weather-icon">
+                    <img id="icon" alt="icon">
+                </div>
             </div>
             <ul class="weather-stats">
                 <li><img src="../img/wind.png" alt="wind"><span id="wind"></span></li>
