@@ -10,7 +10,7 @@ async function loadWeatherByCoords(lat = 55.7558, lon = 37.6173) {
         }
         
         // Обновление данных на странице
-        document.getElementById('temp').innerText = Math.round(data.main.temp) + ' °C';
+        document.getElementById('temp').innerHTML = `<b>${(data.main.temp > 0 ? '+' : '') + Math.round(data.main.temp)}</b> °C`;
         document.getElementById('city').innerText = data.name;
         document.getElementById('wind').innerText = `Ветер : ${Math.round(data.wind.speed)} м/c`;
         document.getElementById('pressure').innerText = `Атм. давление : ${Math.round(data.main.pressure * 0.75)} мм. рт. ст`;

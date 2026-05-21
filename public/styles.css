@@ -47,6 +47,7 @@ body {
 .info {
     font-size: 54px;
     margin: 20px;
+    overflow-wrap: break-word;
 }
 
 .weather-stats {
