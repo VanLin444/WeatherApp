@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="../img/icon.png">
 </head>
 
-<body onload="loadWeatherByCoords()">
+<body>
     <div class="wrapper">
         <input type="text" id="search" class="search-city" placeholder="Введите город..." autocomplete="off">
         <ul class="suggestions" id="suggestions"></ul>
@@ -34,6 +34,7 @@
         </div>
     </div>
     <script src="../src/autocomplete.js"></script>
+    <script src="../src/geodate.js"></script>
     <script src="../src/weather.js"></script>
 </body>
 
