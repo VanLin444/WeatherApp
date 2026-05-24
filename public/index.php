@@ -18,8 +18,8 @@
         <div class="current-weather">
             <div class="weather-header">
                 <div class="info">
-                    <span id="city"></span>
-                    <span id="temp"></span>
+                    <span id="city" class="city"></span>
+                    <span id="temp" class="temp"></span>
                 </div>
                 <div class="weather-icon">
                     <img id="icon" alt="icon">
