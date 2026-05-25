@@ -29,6 +29,13 @@ input.addEventListener('input', () => {
                     li.addEventListener('click', () => {
                         input.value = city.name;
                         list.style.display = 'none';
+                        // Сохраненеие ранее выбранных городов
+                        window.localStorage.setItem("selectedCities", JSON.stringify(
+                            {
+                                city: city.name,
+                                country: city.country,
+                                coords: [city.lat, city.lon]
+                            }))
                         // Загрузка погоды
                         loadWeatherByCoords(city.lat, city.lon);
                     });
@@ -37,4 +44,27 @@ input.addEventListener('input', () => {
                 });
             });
     }, 300); // задержка
+});
+
+// Клик по полю ввода работает единожды
+input.addEventListener('click', () => {
+    if (localStorage.getItem('selectedCities') !== null) {
+        document.getElementById("suggestions").style.display = "block";
+        const li = document.createElement('li');
+        const selCities = JSON.parse(localStorage.getItem('selectedCities'));
+        li.textContent = `${selCities.city}, ${selCities.country}`;
+        list.appendChild(li);
+
+        li.addEventListener('click', () => {
+            input.value = selCities.city;
+            list.style.display = 'none';
+            loadWeatherByCoords(selCities.coords[0], selCities.coords[1]);
+        });
+    }
+}, { once: true })
+
+// Без фокуса на вводе ничего не выводить
+const element = document.querySelector('input');
+element.addEventListener('blur', () => {
+    document.querySelector('.suggestions').style.display = 'none';
 });

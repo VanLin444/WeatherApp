@@ -7,7 +7,10 @@ async function getUserLocation() {
 
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                resolve({ lat: position.coords.latitude, lon: position.coords.longitude });
+                resolve({ 
+                    lat: position.coords.latitude, 
+                    lon: position.coords.longitude 
+                });
             },
             (error) => {
                 reject(error);
