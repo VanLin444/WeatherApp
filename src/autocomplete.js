@@ -2,7 +2,6 @@ const input = document.getElementById('search');
 const list = document.getElementById('suggestions');
 
 let timeout = null;
-
 input.addEventListener('input', () => {
     const query = input.value;
     // debounce (чтобы не спамить API)
@@ -29,7 +28,7 @@ input.addEventListener('input', () => {
                     li.addEventListener('click', () => {
                         input.value = city.name;
                         list.style.display = 'none';
-                        // Сохраненеие ранее выбранных городов
+                        // Сохранение ранее выбранного города
                         window.localStorage.setItem("selectedCities", JSON.stringify(
                             {
                                 city: city.name,
@@ -49,6 +48,7 @@ input.addEventListener('input', () => {
 // Клик по полю ввода работает единожды
 input.addEventListener('click', () => {
     if (localStorage.getItem('selectedCities') !== null) {
+        list.innerHTML = '';
         document.getElementById("suggestions").style.display = "block";
         const li = document.createElement('li');
         const selCities = JSON.parse(localStorage.getItem('selectedCities'));
@@ -61,10 +61,4 @@ input.addEventListener('click', () => {
             loadWeatherByCoords(selCities.coords[0], selCities.coords[1]);
         });
     }
-}, { once: true })
-
-// Без фокуса на вводе ничего не выводить
-const element = document.querySelector('input');
-element.addEventListener('blur', () => {
-    document.querySelector('.suggestions').style.display = 'none';
-});
+},)

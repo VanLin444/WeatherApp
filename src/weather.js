@@ -1,7 +1,8 @@
 window.addEventListener('load', async () => {
     try {
+        loadWeatherByCoords();
         const coords = await getUserLocation();
-        await loadWeatherByCoords(coords.lat, coords.lon);
+        loadWeatherByCoords(coords.lat, coords.lon);
     } catch (error) {
         loadWeatherByCoords();
     }
