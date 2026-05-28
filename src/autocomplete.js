@@ -8,23 +8,19 @@ input.addEventListener('input', () => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
-        if (query.length < 2) {
-            list.innerHTML = '';
-            document.getElementById("suggestions").style.display = "none";
-            return;
-        } else {
-            document.getElementById("suggestions").style.display = "block";
-        }
-
-        fetch(`search.php?q=${query}`)
+        fetch(`../src/search.php?q=${query}`)
             .then(res => res.json())
             .then(data => {
                 list.innerHTML = '';
-
+                // Не выводить список, если введены меньше 2 символов и пришли пустые данные (такого города нет)
+                if (query.length < 2 || data.length === 0) {
+                    list.style.display = 'none';
+                    return;
+                }
+                list.style.display = 'block';
                 data.forEach(city => {
                     const li = document.createElement('li');
                     li.textContent = `${city.name}, ${city.country}`;
-
                     li.addEventListener('click', () => {
                         input.value = city.name;
                         list.style.display = 'none';
@@ -45,7 +41,7 @@ input.addEventListener('input', () => {
     }, 300); // задержка
 });
 
-// Клик по полю ввода работает единожды
+// Вывод ранее введеного города
 input.addEventListener('click', () => {
     if (localStorage.getItem('selectedCities') !== null) {
         list.innerHTML = '';
