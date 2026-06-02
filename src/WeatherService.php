@@ -3,22 +3,40 @@ header('Content-Type: application/json');
 $env = parse_ini_file(__DIR__ . '/../.env');
 $apiKey = $env['API_KEY'];
 
-$lat = $_GET['lat'] ?? null;
-$lon = $_GET['lon'] ?? null;
+// Проверка входных данных
+$lat = filter_input(INPUT_GET, 'lat', FILTER_VALIDATE_FLOAT);
+$lon = filter_input(INPUT_GET, 'lon', FILTER_VALIDATE_FLOAT);
+
+if ($lat === false || $lon === false) {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 'Invalid coordinates'
+    ]);
+    exit;
+}
 
 $googleApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&lang=ru&units=metric&appid={$apiKey}";
 
 $ch = curl_init();
-
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_VERBOSE, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
+curl_setopt_array($ch, [
+    CURLOPT_HEADER => 0,
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => $googleApiUrl,
+    CURLOPT_FOLLOWLOCATION => 1,
+    CURLOPT_VERBOSE => 0,
+    CURLOPT_SSL_VERIFYPEER => false,
+]);
 $response = curl_exec($ch);
+$error = curl_error($ch);
 unset($ch);
 
+// Проверка ответа api
+if ($response === false) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => $error
+    ]);
+    exit;
+}
+
 echo $response;
-?>

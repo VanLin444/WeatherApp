@@ -1,3 +1,4 @@
+// Получение данных о гео-локации пользователя
 async function getUserLocation() {
     return new Promise((resolve, reject) => {
         if (!navigator.geolocation) {

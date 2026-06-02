@@ -27,6 +27,11 @@ unset($ch);
 
 $data = json_decode($response, true);
 
+// Прооверка ответа от api
+if (!is_array($data)) {
+    echo json_encode([]);
+    exit;
+}
 // Упрощаем ответ
 $result = [];
 
@@ -38,5 +43,4 @@ foreach ($data as $city) {
         "lon" => $city['lon']
     ];
 }
-
 echo json_encode($result);

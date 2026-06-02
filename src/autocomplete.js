@@ -1,5 +1,6 @@
 const input = document.getElementById('search');
 const list = document.getElementById('suggestions');
+const SEARCH_DELAY = 500;
 
 let timeout = null;
 input.addEventListener('input', () => {
@@ -31,14 +32,13 @@ input.addEventListener('input', () => {
                                 country: city.country,
                                 coords: [city.lat, city.lon]
                             }))
-                        // Загрузка погоды
                         loadWeatherByCoords(city.lat, city.lon);
                     });
 
                     list.appendChild(li);
                 });
             });
-    }, 300); // задержка
+    }, SEARCH_DELAY);
 });
 
 // Вывод ранее введеного города

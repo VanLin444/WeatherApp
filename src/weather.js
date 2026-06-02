@@ -1,30 +1,40 @@
+const DEFAULT_LOCATION = {
+    lat: 55.7558,
+    lon: 37.6173
+};
+const PRESSURE_COEFFICIENT = 0.75;
+
 window.addEventListener('load', async () => {
     try {
-        loadWeatherByCoords();
         const coords = await getUserLocation();
         loadWeatherByCoords(coords.lat, coords.lon);
-    } catch (error) {
-        loadWeatherByCoords();
+    } catch {
+        await loadWeatherByCoords();
     }
 })
 
 
-// Город по умолчанию - Москва
-async function loadWeatherByCoords(lat = 55.7558, lon = 37.6173) {
+// Получение данных о погоде
+async function loadWeatherByCoords(lat = DEFAULT_LOCATION.lat, lon = DEFAULT_LOCATION.lon) {
     try {
-        const res = await fetch(`../src/WeatherService.php?lat=${lat}&lon=${lon}`);
-        const data = await res.json();
-
-        // Обновление данных на странице
-        document.getElementById('temp').innerHTML = `<b>${(data.main.temp > 0 ? '+' : '') + Math.round(data.main.temp)}</b> °C`;
-        document.getElementById('city').innerText = data.name;
-        document.getElementById('wind').innerText = `Ветер : ${Math.round(data.wind.speed)} м/c`;
-        document.getElementById('pressure').innerText = `Атм. давление : ${Math.round(data.main.pressure * 0.75)} мм. рт. ст`;
-        document.getElementById('humidity').innerText = `Влажность : ${data.main.humidity} %`;
-        document.getElementById('clouds').innerText = ` Облачность : ${data.clouds.all} %`;
-        document.getElementById('icon').src = `https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`;
-
+        const response = await fetch(`../src/WeatherService.php?lat=${lat}&lon=${lon}`);
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        const data = await response.json();
+        renderWeather(data);
     } catch (e) {
-        console.error('Ошибка:', e);
+        console.error('Error : ', e);
     }
+}
+
+// Обновление данных на странице
+function renderWeather(data) {
+    document.getElementById('temp').innerHTML = `<b>${(data.main.temp > 0 ? '+' : '') + Math.round(data.main.temp)}</b> °C`;
+    document.getElementById('city').innerText = data.name;
+    document.getElementById('wind').innerText = `Ветер : ${Math.round(data.wind.speed)} м/c`;
+    document.getElementById('pressure').innerText = `Атм. давление : ${Math.round(data.main.pressure * PRESSURE_COEFFICIENT)} мм. рт. ст`;
+    document.getElementById('humidity').innerText = `Влажность : ${data.main.humidity} %`;
+    document.getElementById('clouds').innerText = ` Облачность : ${data.clouds.all} %`;
+    document.getElementById('icon').src = `https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`;
 }
