@@ -1,7 +1,10 @@
 <?php
 header('Content-Type: application/json');
+require_once __DIR__ . '/Cache.php';
+
 $env = parse_ini_file(__DIR__ . '/../.env');
 $apiKey = $env['API_KEY'];
+$cache = new Cache();
 
 // Проверка входных данных
 $lat = filter_input(INPUT_GET, 'lat', FILTER_VALIDATE_FLOAT);
@@ -12,6 +15,14 @@ if ($lat === false || $lon === false) {
     echo json_encode([
         'error' => 'Invalid coordinates'
     ]);
+    exit;
+}
+
+$cacheKey = "weather_{$lat}_{$lon}";
+$cachedWeather = $cache->get($cacheKey);
+
+if ($cachedWeather !== null) {
+    echo $cachedWeather;
     exit;
 }
 
@@ -38,5 +49,7 @@ if ($response === false) {
     ]);
     exit;
 }
+
+$cache->set($cacheKey, $response);
 
 echo $response;
