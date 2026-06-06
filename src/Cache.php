@@ -14,6 +14,7 @@ class Cache
         }
     }
 
+    // Получение данных из кэша
     public function get(string $key): ?string
     {
         $filename = $this->getCacheFilename($key);
@@ -31,6 +32,7 @@ class Cache
         return json_encode($data['content'], JSON_UNESCAPED_UNICODE);
     }
 
+    // Запись данных в кэш
     public function set(string $key, string $value, ?int $expiry = null): void
     {
         $filename = $this->getCacheFilename($key);
@@ -42,6 +44,7 @@ class Cache
         file_put_contents($filename, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
     }
 
+    // Удаление кэша
     public function delete(string $key): void
     {
         $filename = $this->getCacheFilename($key);
@@ -50,6 +53,7 @@ class Cache
         }
     }
 
+    // Получение имени кэша
     private function getCacheFilename(string $key): string
     {
         return $this->cachePath . '/' . $key . '.json';

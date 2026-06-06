@@ -28,7 +28,7 @@ if ($cachedWeather !== null) {
 
 $googleApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&lang=ru&units=metric&appid={$apiKey}";
 
-$ch = curl_init();
+$ch = curl_init(); // Инициализация сеанса сетевой передачи данных
 curl_setopt_array($ch, [
     CURLOPT_HEADER => 0,
     CURLOPT_RETURNTRANSFER => 1,
@@ -36,12 +36,12 @@ curl_setopt_array($ch, [
     CURLOPT_FOLLOWLOCATION => 1,
     CURLOPT_VERBOSE => 0,
     CURLOPT_SSL_VERIFYPEER => false,
-]);
-$response = curl_exec($ch);
+]); // Установка параметров
+$response = curl_exec($ch); // Отправка запроса и получение ответа
 $error = curl_error($ch);
 unset($ch);
 
-// Проверка ответа api
+// Проверка ответа
 if ($response === false) {
     http_response_code(500);
     echo json_encode([
