@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherApp</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../img/icon.png">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
 </head>
 
 <body>
@@ -21,21 +21,22 @@
                     <span id="city" class="city"></span>
                     <span id="temp" class="temp"></span>
                 </div>
-                <div class="weather-icon">
+                <div id="loader" class="loader">Загрузка...</div>
+                <div class="weather-icon" id="weather-icon">
                     <img id="icon" alt="icon">
                 </div>
             </div>
             <ul class="weather-stats">
-                <li><img src="../img/wind.png" alt="wind"><span id="wind"></span></li>
-                <li><img src="../img/pressure.png" alt="pressure"><span id="pressure"></span></li>
-                <li><img src="../img/humidity.png" alt="humidity"><span id="humidity"></span></li>
-                <li><img src="../img/clouds.png" alt="clouds"><span id="clouds"></span></li>
+                <li><img src="img/wind.png" alt="wind"><span id="wind"></span></li>
+                <li><img src="img/pressure.png" alt="pressure"><span id="pressure"></span></li>
+                <li><img src="img/humidity.png" alt="humidity"><span id="humidity"></span></li>
+                <li><img src="img/clouds.png" alt="clouds"><span id="clouds"></span></li>
             </ul>
         </div>
     </div>
-    <script src="../src/autocomplete.js"></script>
-    <script src="../src/geodate.js"></script>
-    <script src="../src/weather.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/geolocation.js"></script>
+    <script src="js/weather-data.js"></script>
 </body>
 
 <footer>

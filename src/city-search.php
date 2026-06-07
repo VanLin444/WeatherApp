@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: application/json');
 
 $env = parse_ini_file(__DIR__ . '/../.env');
@@ -12,7 +11,6 @@ if (strlen($query) < 2) {
     exit;
 }
 
-// Geocoding API
 $url = "http://api.openweathermap.org/geo/1.0/direct?q=" . urlencode($query) . "&limit=5&appid=" . $apiKey;
 
 $ch = curl_init();
@@ -34,7 +32,6 @@ if (!is_array($data)) {
 }
 // Упрощаем ответ
 $result = [];
-
 foreach ($data as $city) {
     $result[] = [
         "name" => $city['name'],

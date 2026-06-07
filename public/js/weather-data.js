@@ -5,19 +5,24 @@ const DEFAULT_LOCATION = {
 const PRESSURE_COEFFICIENT = 0.75;
 
 window.addEventListener('load', async () => {
+    const loader = document.getElementById('loader');
+    const icon = document.getElementById('weather-icon');
     try {
+        loader.style.display = 'block';
         const coords = await getUserLocation();
-        loadWeatherByCoords(coords.lat, coords.lon);
+        await loadWeatherByCoords(coords.lat, coords.lon);
     } catch {
         await loadWeatherByCoords();
+    } finally {
+        loader.style.display = 'none';
+        icon.style.display = 'block';
     }
 })
-
 
 // Получение данных о погоде
 async function loadWeatherByCoords(lat = DEFAULT_LOCATION.lat, lon = DEFAULT_LOCATION.lon) {
     try {
-        const response = await fetch(`../src/WeatherService.php?lat=${lat}&lon=${lon}`);
+        const response = await fetch(`../src/get-weather.php?lat=${lat}&lon=${lon}`);
         if (!response.ok) {
             throw new Error(response.status);
         }
