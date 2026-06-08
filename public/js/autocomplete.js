@@ -57,9 +57,12 @@ input.addEventListener('blur', () => {
 
 // Вывод последних городов
 function showRecentCities() {
-    // Получаем данные из localstorage
+    // Получаем данные из localstorage, если их нет, то зададим пустой массив (это происходит при первом заходе на сайт)
     const cities = JSON.parse(localStorage.getItem('selectedCities')) || [];
     if (cities.length === 0) {
+        return;
+    }
+    if (!Array.isArray(cities)) {
         return;
     }
 
