@@ -26,7 +26,7 @@ class Cache
         $data = json_decode(file_get_contents($filename), true);
 
         if (!$data || $data['expires'] < time()) {
-            unlink($filename);
+            $this->delete($key);
             return null;
         }
         return json_encode($data['content'], JSON_UNESCAPED_UNICODE);

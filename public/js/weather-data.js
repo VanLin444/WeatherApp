@@ -1,6 +1,7 @@
 const DEFAULT_LOCATION = {
     lat: 55.7558,
-    lon: 37.6173
+    lon: 37.6173,
+    сity: "Москва!"
 };
 const PRESSURE_COEFFICIENT = 0.75;
 
@@ -20,23 +21,23 @@ window.addEventListener('load', async () => {
 })
 
 // Получение данных о погоде
-async function loadWeatherByCoords(lat = DEFAULT_LOCATION.lat, lon = DEFAULT_LOCATION.lon) {
+async function loadWeatherByCoords(lat = DEFAULT_LOCATION.lat, lon = DEFAULT_LOCATION.lon, cityName = DEFAULT_LOCATION.city) {
     try {
         const response = await fetch(`../src/get-weather.php?lat=${lat}&lon=${lon}`);
         if (!response.ok) {
             throw new Error(response.status);
         }
         const data = await response.json();
-        renderWeather(data);
+        renderWeather(data, cityName);
     } catch (e) {
         console.error('Error : ', e);
     }
 }
 
 // Обновление данных на странице
-function renderWeather(data) {
+function renderWeather(data, cityName = null) {
     document.getElementById('temp').innerHTML = `<b>${(data.main.temp > 0 ? '+' : '') + Math.round(data.main.temp)}</b> °C`;
-    document.getElementById('city').innerText = data.name;
+    document.getElementById('city').innerText = cityName || data.name;
     document.getElementById('wind').innerText = `Ветер : ${Math.round(data.wind.speed)} м/c`;
     document.getElementById('pressure').innerText = `Атм. давление : ${Math.round(data.main.pressure * PRESSURE_COEFFICIENT)} мм. рт. ст`;
     document.getElementById('humidity').innerText = `Влажность : ${data.main.humidity} %`;

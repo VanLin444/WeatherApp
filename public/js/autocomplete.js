@@ -36,7 +36,7 @@ input.addEventListener('input', () => {
                         // Сохраняем выбранный город
                         saveCity(city);
                         // Загрузка погоды 
-                        loadWeatherByCoords(city.lat, city.lon);
+                        loadWeatherByCoords(city.lat, city.lon, city.name);
                     });
                     // Добавляем в DOM
                     list.appendChild(li);
@@ -77,7 +77,7 @@ function showRecentCities() {
         li.addEventListener('click', () => {
             input.value = city.city;
             list.style.display = 'none';
-            loadWeatherByCoords(city.coords[0], city.coords[1]);
+            loadWeatherByCoords(city.coords[0], city.coords[1], city.city);
         });
         list.appendChild(li);
     })
